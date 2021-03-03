@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block body %}
+
+
+       <header>
+           <h1 class="mx-auto text-center mt-5">
+               <span style="color: #daa520">Pełny</span>Portfel.com
+           </h1>
+       </header>          
+        <main>
+         <section>
+
+        <div class="container-fluid square">
+
+            <div class="row">
+
+            <div class="col-sm-8 col-md-6 col-lg-4 mx-auto text-center">
+
+                {% if  user.errors is not empty %}
+                    <p>Errors:</p>
+                    <ul>
+                        {% for error in user.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                  <form method="post" action="/signup/create">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend px-1 pt-1 inputIcon">
+                                <i class="icon-user"></i>
+                            </div>
+                            <input class="form-control" type="text" id="inputName" name="name" placeholder="Imię" autofocus
+                            value="{{ user.name }}"/>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend pt-1 pr-2 inputIcon">
+                                <i class="icon-mail"></i>
+                            </div>
+                            <input class="form-control" type="email" id="inputEmail" name="email" placeholder="Adres e-mail"
+                            value="{{ user.email }}"/>
+                        </div>
+
+                        <div class="input-group mb-3">
+                              <div class="input-group-prepend px-1 pt-1 inputIcon">
+                                  <i class="icon-lock"></i>
+                              </div>
+                            <input class="form-control" type="password" id="inputPassword" name="password" placeholder="Hasło" />
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend px-1 pt-1 inputIcon">
+                                <i class="icon-lock"></i>
+                            </div>
+                            <input class="form-control" type="password" id="inputPasswordConfirmation" name="password_confirmation"
+                                   placeholder="Powtórz hasło" />
+                        </div>
+
+                         <button type="submit" class="btn btn-lg signButton">Zarejestruj się</button>
+
+                       </form>
+                   </div>
+
+              </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<footer class="footer mt-5">
+    Pełnyportfel.com &copy; 2020
+
+</footer>
+
+{% endblock %}
