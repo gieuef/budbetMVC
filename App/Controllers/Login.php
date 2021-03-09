@@ -15,6 +15,7 @@ use \App\Flash;
 class Login extends \Core\Controller
 {
 
+
     /**
      * Show the login page
      *
@@ -22,8 +23,13 @@ class Login extends \Core\Controller
      */
     public function newAction()
     {
-        View::renderTemplate('Login/new.html');
+        if(isset($_SESSION['user_id'])) {
+            $this->redirect('/menu/index');
+        } else {
+            View::renderTemplate('Login/new.html');
+        }
     }
+
 
     /**
      * Log in a user
