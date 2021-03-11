@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Log in{% endblock %}
+{% block title %}Dodaj przychód{% endblock %}
 
 {% block body %}
 
@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" > <i class="icon-basket"></i> Dodaj wydatek</a>
+                            <a class="nav-link" href="add_expense.php" > <i class="icon-basket"></i> Dodaj wydatek</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -69,14 +69,62 @@
             </nav>
 
 
+        </div>
 
+
+        <div class="container-fluid my-4 py-4">
+
+
+            <form class="col-sm-10 col-md-8 col-lg-6 py-3 mx-auto square" action="/income/create" method="post" enctype="multipart/form-data">
+
+                <div class="row justify-content-around">
+
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                        <input type="number" class="form-control" name="amount" step="0.01" placeholder="Kwota" required>
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                        <input class="form-control" type="date" name="dateOfIncome" id="today" required>
+                    </div>
+
+                    <script>
+                        document.getElementById('today').value = new Date().toISOString().substring(0, 10);
+                    </script>
+
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                            <select class="form-control" name="incomeCategory" >
+
+                                {% for userIncomeCategory in userIncomeCategories %}
+                                    <option>{{ userIncomeCategory.name }}</option>
+                                {% endfor %}
+
+                            </select>
+
+                    </div>
+
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                        <textarea class="form-control" name="incomeComment" id="komentarz" rows="4" maxlength="100"
+                        placeholder="Komentarz"></textarea>
+                    </div>
+
+                    <div class="col-sm-10 col-lg-8">
+                        <button class="btn bg-menu" type="submit">Dodaj</button>
+                        <button class="btn bg-menu" type="reset">Anuluj</button>
+
+                    </div>
+
+                </div>
+
+            </form>
 
         </div>
 
     </section>
 
 </main>
-
 
 
 
