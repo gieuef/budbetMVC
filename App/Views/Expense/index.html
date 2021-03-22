@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Dodaj przychód{% endblock %}
+{% block title %}Dodaj wydatek{% endblock %}
 
 {% block body %}
 
@@ -75,7 +75,7 @@
         <div class="container-fluid my-4 py-4">
 
 
-            <form class="col-sm-10 col-md-8 col-lg-6 py-3 mx-auto square" action="/income/create" method="post" enctype="multipart/form-data">
+            <form class="col-sm-10 col-md-8 col-lg-6 py-3 mx-auto square" action="/expense/create" method="post" enctype="multipart/form-data">
 
                 <div class="row justify-content-around">
 
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="col-sm-10 col-lg-8 form-group">
-                        <input class="form-control" type="date" name="dateOfIncome" id="today" required>
+                        <input class="form-control" type="date" name="dateOfExpense" id="today" required>
                     </div>
 
                     <script>
@@ -94,10 +94,10 @@
 
 
                     <div class="col-sm-10 col-lg-8 form-group">
-                            <select class="form-control" name="incomeCategory" >
+                            <select class="form-control" name="expenseCategory" >
 
-                                {% for userIncomeCategory in userIncomeCategories %}
-                                    <option>{{ userIncomeCategory.name }}</option>
+                                {% for userExpenseCategory in userExpenseCategories %}
+                                    <option>{{ userExpenseCategory.name }}</option>
                                 {% endfor %}
 
                             </select>
@@ -106,7 +106,18 @@
 
 
                     <div class="col-sm-10 col-lg-8 form-group">
-                        <textarea class="form-control" name="incomeComment" id="komentarz" rows="4" maxlength="100"
+                        <select class="form-control" name="paymentMethod" >
+
+                            {% for userPaymentMethod in userPaymentMethods %}
+                                <option>{{ userPaymentMethod.name }}</option>
+                            {% endfor %}
+
+                        </select>
+
+                </div>
+
+                    <div class="col-sm-10 col-lg-8 form-group">
+                        <textarea class="form-control" name="expenseComment" id="komentarz" rows="4" maxlength="100"
                         placeholder="Komentarz"></textarea>
                     </div>
 

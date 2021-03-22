@@ -20,29 +20,23 @@ class Config
      * Database name
      * @var string
      */
-    const DB_NAME = 'budgetMVC';
+    const DB_NAME = 'grzego22_budgetmvc';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = 'root';
+    const DB_USER = 'grzego22_BudgetAdmin';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = '';
+    const DB_PASSWORD = 'Irena27#';
 
     /**
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = true;
-
-    /**
-     * Secret key for hashing
-     * @var boolean
-     */
-    const SECRET_KEY = 'iftU9chdxVgbNJRz6AwUwC2uZ1O8qZGB';
+    const SHOW_ERRORS = false;
 }

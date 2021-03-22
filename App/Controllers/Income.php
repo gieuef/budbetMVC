@@ -29,6 +29,13 @@ class Income extends Authenticated
 
             $this->redirect('/income/index');
 
+        } 
+        else {
+
+            Flash::addMessage('Przychód nie został dodany. Spróbuj ponownie', Flash::WARNING);
+
+            $this->redirect('/income/index');
+
         }
 
     }

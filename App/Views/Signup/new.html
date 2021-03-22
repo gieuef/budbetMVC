@@ -60,6 +60,9 @@
                     required: 'Pole jest wymagane',
                     equalTo: 'Hasła muszą być identyczne'
                 }
+            },
+            errorPlacement: function( error, element ) {
+                error.insertAfter( element.parent() );
             }
         });
     });
