@@ -7,6 +7,11 @@ body
 	font-family: 'Open Sans', sans-serif;
 }
 
+.table
+{
+	text-align: left;
+}
+
 h1
 {
 	font-size: 3em;
@@ -76,6 +81,11 @@ input[type=email]:focus
 	color: #428c42;
 }
 
+#homeButton
+{
+	text-decoration: none;
+	color:#222222;
+}
 
 .signButton
 {
@@ -154,6 +164,11 @@ label.error {
 
 	width: 100%;
 	float: none;
+}
+
+.todayDate
+{
+
 }
 
 @media screen and (orientation: portrait) {

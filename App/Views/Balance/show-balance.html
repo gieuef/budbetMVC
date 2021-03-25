@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Bilans{% endblock %}
+
+{% block footer %}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    // Draw the chart and set the chart values
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      {% for incomesCategory in incomesByCategory %}
+     ['{{ incomesCategory.name }}', {{ incomesCategory.sumOfCategory }}],
+        {% endfor %}  
+    ]);
+
+
+    
+      // Optional; add a title and set the width and height of the chart
+      var options = {'title':'Wykres wydatków', is3D: true, 'width':400, 'height':300 };
+    
+      // Display the chart inside the <div> element with id="piechart"
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    }
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+
+        <div class="container-fluid square col-sm-12 col-md-8 py-3 " >
+
+            <h2 class="h2 mx-auto mb-3">Przychody:</h2>
+
+            <table class="table table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Kategoria</th>
+                    <th>Kwota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for income in incomesByCategory %}
+                    <tr>
+                    <td>{{ income.name }}</td>
+                    <td>{{ income.sumOfCategory }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+
+              <h2 class="h2 mx-auto mt-5 mb-3">Wydatki:</h2>
+
+
+              <table class="table table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Kategoria</th>
+                    <th>Kwota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for expense in expensesByCategory %}
+                    <tr>
+                    <td>{{ expense.name }}</td>
+                    <td>{{ expense.sumOfCategory }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              
+
+              <h2 class="h2 mx-auto mt-5 mb-3"> Poszczególne przychody:</h2>
+
+              <table class="table table-hover">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>Kategoria</th>
+                      <th>Kwota</th>
+                      <th>Data</th>
+                      <th>Komentarz</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for income in detailedIncomesByCategory %}
+                      <tr>
+                      <td>{{ income.name }}</td>
+                      <td>{{ income.amount }}</td>
+                      <td>{{ income.date_of_income }}</td>
+                      <td>{{ income.income_comment }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+                <h2 class="h2 mx-auto mt-5 mb-3"> Poszczególne wydatki:</h2>
+
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Kategoria</th>
+                        <th>Kwota</th>
+                        <th>Metoda płatności</th>
+                        <th>Data</th>
+                        <th>Komentarz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for expense in detailedExpensesByCategory %}
+                        <tr>
+                        <td>{{ expense.name }}</td>
+                        <td>{{ expense.amount }}</td>
+                        <td>{{ expense.payMethod }}</td>
+                        <td>{{ expense.date_of_expense }}</td>
+                        <td>{{ expense.expense_comment }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+              <h3 class="h3 mx-auto">Bilans</h3>
+              <b>{{balance}}</b>
+
+
+            <div id="piechart" class="mx-auto text-center mt-3">
+
+            </div>
+     
+        </div>
+
+
+
+<footer class="footer mt-5">
+    Pełnyportfel.com &copy; 2020
+
+</footer>
+
+{% endblock %}
