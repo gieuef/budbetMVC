@@ -20,23 +20,23 @@ class Config
      * Database name
      * @var string
      */
-    const DB_NAME = 'grzego22_budgetmvc';
+    const DB_NAME = 'budgetmvc';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = 'grzego22_BudgetAdmin';
+    const DB_USER = 'root';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'Irena27#';
+    const DB_PASSWORD = '';
 
     /**
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = false;
+    const SHOW_ERRORS = true;
 }
